@@ -1,0 +1,151 @@
+﻿﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>License & Support Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+
+        /*.header {
+                    background-color: #333;
+                    color: #fff;
+                    text-align: center;
+                    padding: 0.75rem 0;
+                    margin-right: -15px;
+                }*/
+
+        /*.container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            height: 500px;
+            margin-top: -40px;
+        }*/
+
+        .content {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .content h2 {
+            text-align:center;
+        }
+        .features {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            height: 180px;
+            
+        }
+
+        .feature {
+            flex-basis: calc(33.33% - 1rem);
+            padding: 1rem;
+            text-align: center;            
+            /*background-color: #f5f5f5;*/
+            background-color: #02bf66;
+            border-radius: 8px;         
+            border-bottom: 10px solid #375aa6;
+        }
+
+            .feature h4 {
+                margin-top: 0;
+                margin-top: 20px;
+                color:white;
+            }
+
+      /*  .footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+        }*/
+    </style>
+</head>
+<body>
+   
+    <div class="content col-md-11 mx-auto @*min-vh-100*@">
+        <h2 style="color:#375aa6">Dashboard</h2>
+           
+        <div class="features">
+            <div class="feature">
+                <h4>Total User</h4>
+@*                <a asp-controller="Home" asp-action="UserList" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="@ViewBag.totalUser">@ViewBag.totalUser</a>
+*@                <a asp-controller="Home" asp-action="UserList" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="400" style="color:white;">000</a>
+
+            </div>
+            <div class="feature">
+                <h4>Total Client</h4>
+               @* <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3">@ViewBag.totalClient</a>*@
+                <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="300" style="color:white;">000</a>
+
+            </div>
+            <div class="feature">
+                <h4>Total Project</h4>
+               @* <a asp-controller="Project" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3">@ViewBag.totalProject</a>*@
+                <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="200" style="color:white;">000</a>
+            </div>
+        </div>
+     
+        <div class="features mb-5 my-2">
+            <div class="feature">
+                <h4>Total Client Support</h4>
+                @*<a asp-controller="SupportHistory" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3">@ViewBag.totalSupportClient</a>*@
+                <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="100" style="color:white;">000</a>
+            </div>
+            <div class="feature">
+                <h4>Total Support Hours</h4>
+              @*  <a asp-controller="SupportHistory" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3">@ViewBag.TotalSupportHoursSum</a>*@
+                <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="280" style="color:white;">000</a>
+            </div>
+            <div class="feature">
+             <h4>Total Token</h4>
+           @*  <a asp-controller="Token" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3">@ViewBag.totalToken</a>*@
+                <a asp-controller="Client" asp-action="Index" target="_blank" class="font-weight-bold font-size-h4 d-inline-block mt-3" id="num" data="250" style="color:white;">000</a>
+        </div>
+        </div>
+        </div>
+   
+   @* <div class="footer">
+        <p>&copy; 2023 License & Support Management Software. All rights reserved.</p>
+    </div>*@
+</body>
+</html>
+<script>
+    let valueDisplays=document.querySelectorAll("#num");
+    let interval = 1000;
+    valueDisplays.forEach((valueDisplay) =>{
+        let startValue = 0;
+        let endValue = parseInt(valueDisplay.getAttribute("data"));
+        let duration = Math.floor(interval / endValue);
+        let counter = setInterval(function(){
+            startValue +=1;
+            valueDisplay.textContent=startValue;
+            if(startValue == endValue){
+                clearInterval(counter);
+            }
+        }, duration);
+    });
+</script>
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            $("#Home").css("display", "block");
+            $("#Home").css("background-color", "#18f98f");
+        });
+    </script>
+}
